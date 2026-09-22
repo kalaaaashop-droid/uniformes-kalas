@@ -75,11 +75,11 @@ const CATALOG = {
       image: "https://placehold.co/400x400/EAF1F8/0B3D5C?text=Pantalon+Cargo",
     },
     {
-      id: "pant-skinny",
-      name: "Skinny Tiro Alto",
-      description: "Entallado, tiro alto, silueta moderna.",
+      id: "pant-bolsillo-clasico",
+      name: "Bolsillo Clásico",
+      description: "Bolsillo lateral de parche, corte recto, cintura elástica.",
       price: 17,
-      image: "https://placehold.co/400x400/EAF1F8/0B3D5C?text=Pantalon+Skinny",
+      image: "img/productos/pantalon-bolsillo-clasico.jpg",
     },
   ],
 
