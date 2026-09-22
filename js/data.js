@@ -156,7 +156,7 @@ const CATALOG = {
     {
       id: "logo-dtf",
       name: "Logo DTF",
-      description: "Estampado DTF a color, ideal para diseños detallados. Ciertas condiciones aplican.",
+      description: "Estampado DTF a color, ideal para diseños detallados. Ciertas condiciones aplican (solo para universidades).",
       extraCost: 0,
     },
     {
