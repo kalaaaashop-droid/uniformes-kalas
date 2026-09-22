@@ -80,7 +80,6 @@ function renderFabricCards() {
     card.setAttribute("aria-pressed", String(isSelected));
     const extra = fabric.extraCost > 0 ? `+${money(fabric.extraCost)}` : "Incluida";
     card.innerHTML = `
-      <img src="${fabric.image}" alt="${fabric.name}" class="option-card__img option-card__img--fabric" loading="lazy" />
       <div class="option-card__body">
         <p class="option-card__name">${fabric.name}</p>
         <p class="option-card__desc">${fabric.description}</p>
