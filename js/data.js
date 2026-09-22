@@ -54,20 +54,6 @@ const CATALOG = {
   // Paso 2: Pantalones
   pants: [
     {
-      id: "pant-jogger",
-      name: "Jogger Elástico",
-      description: "Tobillo ajustado, cintura elástica con cordón.",
-      price: 16,
-      image: "https://placehold.co/400x400/EAF1F8/0B3D5C?text=Pantalon+Jogger",
-    },
-    {
-      id: "pant-recto",
-      name: "Recto Clásico",
-      description: "Corte recto tradicional, cintura elástica.",
-      price: 15,
-      image: "https://placehold.co/400x400/EAF1F8/0B3D5C?text=Pantalon+Recto",
-    },
-    {
       id: "pant-cargo",
       name: "Cargo Multibolsillos",
       description: "Bolsillo cargo tipo parche, uno de cada lado, bota ancha. <strong>Puedes elegir entre pretina lisa y arruchada.</strong>",
