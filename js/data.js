@@ -42,6 +42,13 @@ const CATALOG = {
       price: 19,
       image: "img/productos/camisa-cuello-mao-grueso.jpg",
     },
+    {
+      id: "shirt-mao-fino",
+      name: "Cuello Mao Fino",
+      description: "Cuello mao delgado, manga corta, ajuste recto.",
+      price: 19,
+      image: "img/productos/camisa-cuello-mao-fino.jpg",
+    },
   ],
 
   // Paso 2: Pantalones
