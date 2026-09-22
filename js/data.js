@@ -12,7 +12,7 @@ const CATALOG = {
       name: "Cuello V Clásica",
       description: "Corte recto, escote en V, bolsillo frontal.",
       price: 18,
-      image: "https://placehold.co/400x400/E8F4F1/0F5C4C?text=Filipina+Cuello+V",
+      image: "img/productos/camisa-cuello-v-clasica.jpg",
     },
     {
       id: "shirt-cruzada",
