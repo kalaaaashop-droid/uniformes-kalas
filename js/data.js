@@ -35,6 +35,13 @@ const CATALOG = {
       price: 17,
       image: "https://placehold.co/400x400/E8F4F1/0F5C4C?text=Filipina+Redonda",
     },
+    {
+      id: "shirt-mao-grueso",
+      name: "Cuello Mao Grueso",
+      description: "Cuello mao reforzado, manga corta, ajuste recto.",
+      price: 19,
+      image: "img/productos/camisa-cuello-mao-grueso.jpg",
+    },
   ],
 
   // Paso 2: Pantalones
