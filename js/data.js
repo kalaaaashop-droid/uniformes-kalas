@@ -77,27 +77,21 @@ const CATALOG = {
   ],
 
   // Paso 3: Telas (cada una define cuánto suma al precio base)
+  // Microfibra cuesta $5 menos que Stretch.
   fabrics: [
     {
-      id: "fabric-antifluido",
-      name: "Antifluido Clásico",
-      description: "Repele líquidos, transpirable, ideal para jornadas largas.",
+      id: "fabric-microfibra",
+      name: "Microfibra",
+      description: "Tela clásica de uniformes médicos, liviana y de fácil cuidado.",
       extraCost: 0,
-      image: "https://placehold.co/400x260/F4F1E8/6B5B00?text=Antifluido+Clasico",
+      image: "https://placehold.co/400x260/F4F1E8/6B5B00?text=Microfibra",
     },
     {
-      id: "fabric-spandex",
-      name: "Spandex / Stretch Premium",
+      id: "fabric-stretch",
+      name: "Stretch",
       description: "Máxima elasticidad, se ajusta al cuerpo, gran comodidad.",
-      extraCost: 4,
-      image: "https://placehold.co/400x260/F4F1E8/6B5B00?text=Spandex+Stretch",
-    },
-    {
-      id: "fabric-algodon",
-      name: "Algodón Premium",
-      description: "Suave, fresco y liviano, excelente para climas cálidos.",
-      extraCost: 2,
-      image: "https://placehold.co/400x260/F4F1E8/6B5B00?text=Algodon+Premium",
+      extraCost: 5,
+      image: "https://placehold.co/400x260/F4F1E8/6B5B00?text=Stretch",
     },
   ],
 
@@ -109,7 +103,7 @@ const CATALOG = {
      cada vez que el usuario cambia de tela (ver app.js).
      ------------------------------------------------------------ */
   colorsByFabric: {
-    "fabric-antifluido": [
+    "fabric-microfibra": [
       { id: "azul-cielo", name: "Azul Cielo", hex: "#8FC7E8" },
       { id: "azul-marino", name: "Azul Marino", hex: "#1F3B5C" },
       { id: "verde-quirurgico", name: "Verde Quirúrgico", hex: "#4B7B6B" },
@@ -121,20 +115,12 @@ const CATALOG = {
       { id: "morado", name: "Morado", hex: "#6B4E9B" },
       { id: "turquesa", name: "Turquesa", hex: "#2FA6A0" },
     ],
-    "fabric-spandex": [
+    "fabric-stretch": [
       { id: "azul-marino", name: "Azul Marino", hex: "#1F3B5C" },
       { id: "negro", name: "Negro", hex: "#1B1B1D" },
       { id: "gris-perla", name: "Gris Perla", hex: "#C3C7CC" },
       { id: "verde-menta", name: "Verde Menta", hex: "#9FD8C8" },
       { id: "vino-tinto", name: "Vino Tinto", hex: "#6E2436" },
-    ],
-    "fabric-algodon": [
-      { id: "blanco", name: "Blanco", hex: "#FFFFFF" },
-      { id: "azul-cielo", name: "Azul Cielo", hex: "#8FC7E8" },
-      { id: "verde-menta", name: "Verde Menta", hex: "#9FD8C8" },
-      { id: "gris-perla", name: "Gris Perla", hex: "#C3C7CC" },
-      { id: "negro", name: "Negro", hex: "#1B1B1D" },
-      { id: "rosa-palo", name: "Rosa Palo", hex: "#E3B7B0" },
     ],
   },
 
