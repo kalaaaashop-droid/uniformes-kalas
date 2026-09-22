@@ -15,11 +15,11 @@ const CATALOG = {
       image: "img/productos/camisa-cuello-v-clasica.jpg",
     },
     {
-      id: "shirt-cruzada",
-      name: "Cruzada Wrap",
-      description: "Envolvente, ajuste femenino, dos bolsillos.",
-      price: 20,
-      image: "https://placehold.co/400x400/E8F4F1/0F5C4C?text=Filipina+Cruzada",
+      id: "shirt-v-bolsillo",
+      name: "Cuello V con Bolsillo",
+      description: "Escote en V, bolsillo frontal para bordado o logo.",
+      price: 19,
+      image: "img/productos/camisa-cuello-v-bolsillo.jpg",
     },
     {
       id: "shirt-v-delgado",
