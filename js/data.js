@@ -156,7 +156,7 @@ const CATALOG = {
     {
       id: "logo-dtf",
       name: "Logo DTF",
-      description: "Estampado DTF a color, ideal para diseños detallados.",
+      description: "Estampado DTF a color. Sin costo extra para Universidad José Antonio Páez y Universidad Arturo Michelena.",
       extraCost: 7,
     },
     {
