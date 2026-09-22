@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uniformes Kalas | Arma tu conjunto de scrubs a medida</title>
+  <meta name="description" content="Diseña tu uniforme médico personalizado: elige camisa, pantalón, tela y color. Confección bajo pedido en Valencia, Venezuela." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clinic: {
+              blue: "#2F6690",
+              "blue-dark": "#1F4A68",
+              "blue-light": "#EAF1F8",
+              mint: "#6FBBA6",
+              "mint-dark": "#4B9683",
+              "mint-light": "#EAF6F2",
+            },
+            slate: {
+              900: "#1F2933",
+              700: "#3E4C59",
+              500: "#7B8794",
+              200: "#E4E7EB",
+              100: "#F5F7FA",
+            },
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-slate-100 text-slate-900 font-sans antialiased">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="bg-clinic-blue-dark text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-full bg-clinic-mint flex items-center justify-center font-extrabold text-clinic-blue-dark">U</span>
+        <span class="font-extrabold text-lg tracking-wide">Uniformes <span class="text-clinic-mint">Kalas</span></span>
+      </div>
+      <p class="hidden sm:block text-sm text-white/80">Confección bajo pedido en Valencia, Venezuela</p>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-clinic-blue text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold">Arma tu uniforme médico a tu medida</h1>
+      <p class="mt-3 text-white/85 max-w-2xl mx-auto">
+        Elige la camisa, el pantalón, la tela y el color. Nosotras lo confeccionamos para ti.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== BARRA DE PROGRESO ===================== -->
+  <div class="sticky top-0 z-40 bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+        <div id="progress-fill" class="h-full bg-clinic-mint transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8">
+
+    <!-- ---- Constructor (pasos) ---- -->
+    <div class="space-y-10 pb-28 lg:pb-0">
+
+      <!-- Paso 1: Camisa -->
+      <section aria-labelledby="step1-title">
+        <div class="step-heading">
+          <span class="step-number">1</span>
+          <div>
+            <h2 id="step1-title" class="step-title">Elige tu camisa (filipina)</h2>
+            <p class="step-subtitle">Selecciona el estilo que más te guste.</p>
+          </div>
+        </div>
+        <div id="shirts-grid" class="options-grid"></div>
+      </section>
+
+      <!-- Paso 2: Pantalón -->
+      <section aria-labelledby="step2-title">
+        <div class="step-heading">
+          <span class="step-number">2</span>
+          <div>
+            <h2 id="step2-title" class="step-title">Elige tu pantalón</h2>
+            <p class="step-subtitle">Combínalo con la camisa que elegiste.</p>
+          </div>
+        </div>
+        <div id="pants-grid" class="options-grid"></div>
+      </section>
+
+      <!-- Paso 3: Tela -->
+      <section aria-labelledby="step3-title">
+        <div class="step-heading">
+          <span class="step-number">3</span>
+          <div>
+            <h2 id="step3-title" class="step-title">Elige la tela</h2>
+            <p class="step-subtitle">La disponibilidad de colores depende de la tela seleccionada.</p>
+          </div>
+        </div>
+        <div id="fabrics-grid" class="options-grid options-grid--fabrics"></div>
+      </section>
+
+      <!-- Paso 4: Color (condicional a la tela) -->
+      <section aria-labelledby="step4-title">
+        <div class="step-heading">
+          <span class="step-number">4</span>
+          <div>
+            <h2 id="step4-title" class="step-title">Elige el color</h2>
+            <p class="step-subtitle">Los colores disponibles cambian según la tela elegida.</p>
+          </div>
+        </div>
+        <p id="colors-hint" class="text-sm text-slate-500 italic mb-3">Primero elige una tela para ver los colores disponibles.</p>
+        <div id="colors-grid" class="colors-grid"></div>
+      </section>
+    </div>
+
+    <!-- ---- Panel de resumen (Live Preview) ---- -->
+    <aside class="hidden lg:block">
+      <div class="summary-panel">
+        <h3 class="summary-title">Resumen de tu pedido</h3>
+        <dl class="summary-list">
+          <div class="summary-row">
+            <dt>Camisa</dt>
+            <dd id="summary-shirt">Sin seleccionar</dd>
+          </div>
+          <div class="summary-row">
+            <dt>Pantalón</dt>
+            <dd id="summary-pant">Sin seleccionar</dd>
+          </div>
+          <div class="summary-row">
+            <dt>Tela</dt>
+            <dd id="summary-fabric">Sin seleccionar</dd>
+          </div>
+          <div class="summary-row">
+            <dt>Color</dt>
+            <dd id="summary-color">Sin seleccionar</dd>
+          </div>
+        </dl>
+        <div class="summary-total-row">
+          <span>Total estimado</span>
+          <span id="summary-total">$0.00</span>
+        </div>
+        <button id="order-btn" type="button" class="order-btn" disabled>
+          Hacer pedido por WhatsApp
+        </button>
+        <p class="summary-note">Al hacer clic se abrirá WhatsApp con tu pedido listo para enviar.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ---- Panel de resumen fijo (móvil) ---- -->
+  <div class="summary-bar lg:hidden">
+    <div class="summary-bar__info">
+      <span class="summary-bar__label">Total estimado</span>
+      <span id="summary-total-mobile" class="summary-bar__total">$0.00</span>
+    </div>
+    <button id="order-btn-mobile" type="button" class="order-btn order-btn--mobile" disabled>
+      Pedir por WhatsApp
+    </button>
+  </div>
+
+  <footer class="bg-clinic-blue-dark text-white/70 text-center text-sm py-6 mt-4">
+    <p>© <span id="year"></span> Uniformes Kalas — Confección bajo pedido.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    // Sincroniza el botón/total móvil con el panel de escritorio.
+    const mobileBtn = document.getElementById("order-btn-mobile");
+    const mobileTotal = document.getElementById("summary-total-mobile");
+    mobileBtn.addEventListener("click", () => document.getElementById("order-btn").click());
+    const observer = new MutationObserver(() => {
+      mobileTotal.textContent = document.getElementById("summary-total").textContent;
+      mobileBtn.disabled = document.getElementById("order-btn").disabled;
+      mobileBtn.classList.toggle("btn-disabled", mobileBtn.disabled);
+    });
+    observer.observe(document.getElementById("summary-total"), { childList: true });
+    observer.observe(document.getElementById("order-btn"), { attributes: true, attributeFilter: ["disabled"] });
+  </script>
+</body>
+</html>
