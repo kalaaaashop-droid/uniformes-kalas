@@ -11,7 +11,7 @@ const CATALOG = {
       id: "shirt-v",
       name: "Cuello V Clásica",
       description: "Corte recto, escote en V, bolsillo frontal.",
-      price: 18,
+      price: 19,
       image: "img/productos/camisa-cuello-v-clasica.jpg",
     },
     {
