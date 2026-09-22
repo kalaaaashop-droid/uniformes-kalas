@@ -8,6 +8,7 @@ const state = {
   pantId: null,
   fabricId: null,
   colorId: null,
+  logoId: null,
 };
 
 const els = {
@@ -16,10 +17,12 @@ const els = {
   fabrics: document.getElementById("fabrics-grid"),
   colors: document.getElementById("colors-grid"),
   colorsHint: document.getElementById("colors-hint"),
+  logos: document.getElementById("logos-grid"),
   summaryShirt: document.getElementById("summary-shirt"),
   summaryPant: document.getElementById("summary-pant"),
   summaryFabric: document.getElementById("summary-fabric"),
   summaryColor: document.getElementById("summary-color"),
+  summaryLogo: document.getElementById("summary-logo"),
   summaryTotal: document.getElementById("summary-total"),
   orderBtn: document.getElementById("order-btn"),
   progressFill: document.getElementById("progress-fill"),
@@ -127,6 +130,37 @@ function renderColorSwatches() {
   });
 }
 
+/* ------------------------------------------------------------
+   RENDER: tarjetas de logo (Sin logo / DTF / Bordado)
+   ------------------------------------------------------------ */
+function renderLogoCards() {
+  els.logos.innerHTML = "";
+  CATALOG.logoOptions.forEach((logo) => {
+    const isSelected = logo.id === state.logoId;
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = `option-card ${isSelected ? "option-card--selected" : ""}`;
+    card.setAttribute("aria-pressed", String(isSelected));
+    const extra = logo.extraCost > 0 ? `+${money(logo.extraCost)}` : "Sin costo extra";
+    card.innerHTML = `
+      <div class="option-card__body">
+        <p class="option-card__name">${logo.name}</p>
+        <p class="option-card__desc">${logo.description}</p>
+        <p class="option-card__price">${extra}</p>
+      </div>
+      <span class="option-card__check">✓</span>
+    `;
+    card.addEventListener("click", () => selectLogo(logo.id));
+    els.logos.appendChild(card);
+  });
+}
+
+function selectLogo(logoId) {
+  state.logoId = logoId;
+  renderLogoCards();
+  updateSummary();
+}
+
 function selectFabric(fabricId) {
   state.fabricId = fabricId;
 
@@ -161,11 +195,13 @@ function calculateTotal() {
   const shirt = findById(CATALOG.shirts, state.shirtId);
   const pant = findById(CATALOG.pants, state.pantId);
   const fabric = findById(CATALOG.fabrics, state.fabricId);
+  const logo = findById(CATALOG.logoOptions, state.logoId);
 
   let total = 0;
   if (shirt) total += shirt.price;
   if (pant) total += pant.price;
   if (fabric) total += fabric.extraCost;
+  if (logo) total += logo.extraCost;
   return total;
 }
 
@@ -175,11 +211,13 @@ function updateSummary() {
   const fabric = findById(CATALOG.fabrics, state.fabricId);
   const palette = state.fabricId ? CATALOG.colorsByFabric[state.fabricId] : [];
   const color = state.colorId ? findById(palette, state.colorId) : null;
+  const logo = findById(CATALOG.logoOptions, state.logoId);
 
   els.summaryShirt.textContent = shirt ? shirt.name : "Sin seleccionar";
   els.summaryPant.textContent = pant ? pant.name : "Sin seleccionar";
   els.summaryFabric.textContent = fabric ? fabric.name : "Sin seleccionar";
   els.summaryColor.textContent = color ? color.name : "Sin seleccionar";
+  els.summaryLogo.textContent = logo ? logo.name : "Sin seleccionar";
 
   if (color) {
     els.summaryColor.style.setProperty("--dot-color", color.hex);
@@ -190,7 +228,7 @@ function updateSummary() {
 
   els.summaryTotal.textContent = money(calculateTotal());
 
-  const complete = shirt && pant && fabric && color;
+  const complete = shirt && pant && fabric && color && logo;
   els.orderBtn.disabled = !complete;
   els.orderBtn.classList.toggle("btn-disabled", !complete);
 
@@ -198,7 +236,7 @@ function updateSummary() {
 }
 
 function updateProgress() {
-  const steps = [state.shirtId, state.pantId, state.fabricId, state.colorId];
+  const steps = [state.shirtId, state.pantId, state.fabricId, state.colorId, state.logoId];
   const done = steps.filter(Boolean).length;
   const pct = (done / steps.length) * 100;
   els.progressFill.style.width = `${pct}%`;
@@ -213,6 +251,7 @@ function buildWhatsAppMessage() {
   const fabric = findById(CATALOG.fabrics, state.fabricId);
   const palette = state.fabricId ? CATALOG.colorsByFabric[state.fabricId] : [];
   const color = findById(palette, state.colorId);
+  const logo = findById(CATALOG.logoOptions, state.logoId);
   const total = calculateTotal();
 
   const lines = [
@@ -221,6 +260,7 @@ function buildWhatsAppMessage() {
     `• Pantalón: ${pant.name}`,
     `• Tela: ${fabric.name}`,
     `• Color: ${color.name}`,
+    `• Logo: ${logo.name}`,
     `• Total estimado: ${money(total)}`,
     "",
     "Quedo atent@ para coordinar talla, medidas y forma de pago. ¡Gracias!",
@@ -244,6 +284,7 @@ function init() {
   renderGarmentCards(els.pants, CATALOG.pants, state.pantId, selectPant);
   renderFabricCards();
   renderColorSwatches();
+  renderLogoCards();
   updateSummary();
   els.orderBtn.addEventListener("click", handleOrderClick);
 }

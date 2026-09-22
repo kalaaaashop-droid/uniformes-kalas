@@ -144,6 +144,28 @@ const CATALOG = {
       { id: "rosa-palo", name: "Rosa Palo", hex: "#E3B7B0" },
     ],
   },
+
+  // Paso 5: Logo (opcional, con recargo si se elige DTF o bordado)
+  logoOptions: [
+    {
+      id: "logo-ninguno",
+      name: "Sin logo",
+      description: "Uniforme liso, sin personalización.",
+      extraCost: 0,
+    },
+    {
+      id: "logo-dtf",
+      name: "Logo DTF",
+      description: "Estampado DTF a color, ideal para diseños detallados.",
+      extraCost: 7,
+    },
+    {
+      id: "logo-bordado",
+      name: "Logo Bordado",
+      description: "Bordado en hilo, acabado más resistente y elegante.",
+      extraCost: 7,
+    },
+  ],
 };
 
 // Número de WhatsApp de contacto (formato internacional, sin "+" ni espacios).
