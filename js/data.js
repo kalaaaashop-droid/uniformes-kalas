@@ -176,5 +176,4 @@ const CATALOG = {
 };
 
 // Número de WhatsApp de contacto (formato internacional, sin "+" ni espacios).
-// TODO: reemplaza con el número real del negocio de uniformes.
-const WHATSAPP_NUMBER = "584140000000";
+const WHATSAPP_NUMBER = "584220250930";
