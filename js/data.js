@@ -70,7 +70,7 @@ const CATALOG = {
     {
       id: "pant-cargo",
       name: "Cargo Multibolsillos",
-      description: "Bolsillo cargo tipo parche, uno de cada lado, muy funcional.",
+      description: "Bolsillo cargo tipo parche, uno de cada lado, bota ancha, muy funcional.",
       price: 19,
       image: "img/productos/pantalon-cargo-multibolsillos.jpg",
     },
