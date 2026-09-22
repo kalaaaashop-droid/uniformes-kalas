@@ -22,11 +22,11 @@ const CATALOG = {
       image: "https://placehold.co/400x400/E8F4F1/0F5C4C?text=Filipina+Cruzada",
     },
     {
-      id: "shirt-deportiva",
-      name: "Deportiva Raglán",
-      description: "Manga raglán, cuello redondo, estilo moderno.",
+      id: "shirt-v-delgado",
+      name: "Cuello en V Delgado",
+      description: "Escote en V, tela ligera, manga corta, bolsillo lateral.",
       price: 19,
-      image: "https://placehold.co/400x400/E8F4F1/0F5C4C?text=Filipina+Deportiva",
+      image: "img/productos/camisa-cuello-v-delgado.jpg",
     },
     {
       id: "shirt-redonda",
