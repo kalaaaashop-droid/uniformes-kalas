@@ -29,11 +29,11 @@ const CATALOG = {
       image: "img/productos/camisa-cuello-v-delgado.jpg",
     },
     {
-      id: "shirt-redonda",
-      name: "Cuello Redondo Fit",
-      description: "Entallada, cuello redondo, muy cómoda.",
-      price: 17,
-      image: "https://placehold.co/400x400/E8F4F1/0F5C4C?text=Filipina+Redonda",
+      id: "shirt-cierre",
+      name: "Cuello con Cierre",
+      description: "Cuello alto con zíper frontal, manga corta, ajuste recto.",
+      price: 19,
+      image: "img/productos/camisa-cuello-cierre.jpg",
     },
     {
       id: "shirt-mao-grueso",
