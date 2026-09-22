@@ -173,6 +173,27 @@ const CATALOG = {
       extraCost: 7,
     },
   ],
+
+  // Paso 6: Talla (de XL en adelante hay un cargo adicional de $5)
+  sizes: [
+    { id: "size-xs", name: "XS", extraCost: 0 },
+    { id: "size-s", name: "S", extraCost: 0 },
+    { id: "size-m", name: "M", extraCost: 0 },
+    { id: "size-l", name: "L", extraCost: 0 },
+    { id: "size-xl", name: "XL", extraCost: 0 },
+    { id: "size-xxl", name: "2XL", extraCost: 5 },
+    { id: "size-xxxl", name: "3XL", extraCost: 5 },
+  ],
+
+  // Tabla de medidas universales (cm), como referencia para elegir talla.
+  sizeChart: {
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+    rows: [
+      { label: "Contorno de busto (C.B)", values: [90, 94, 98, 102, 108, 114, 120] },
+      { label: "Contorno de cadera (C.K)", values: [94, 98, 102, 106, 112, 118, 124] },
+      { label: "Contorno de cintura (C.C)", values: [66, 72, 74, 78, 82, 94, 100] },
+    ],
+  },
 };
 
 // Número de WhatsApp de contacto (formato internacional, sin "+" ni espacios).

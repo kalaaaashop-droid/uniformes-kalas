@@ -9,6 +9,7 @@ const state = {
   fabricId: null,
   colorId: null,
   logoId: null,
+  sizeId: null,
 };
 
 const els = {
@@ -18,11 +19,14 @@ const els = {
   colors: document.getElementById("colors-grid"),
   colorsHint: document.getElementById("colors-hint"),
   logos: document.getElementById("logos-grid"),
+  sizes: document.getElementById("sizes-grid"),
+  sizeChartTable: document.getElementById("size-chart-table"),
   summaryShirt: document.getElementById("summary-shirt"),
   summaryPant: document.getElementById("summary-pant"),
   summaryFabric: document.getElementById("summary-fabric"),
   summaryColor: document.getElementById("summary-color"),
   summaryLogo: document.getElementById("summary-logo"),
+  summarySize: document.getElementById("summary-size"),
   summaryTotal: document.getElementById("summary-total"),
   orderBtn: document.getElementById("order-btn"),
   progressFill: document.getElementById("progress-fill"),
@@ -163,6 +167,46 @@ function selectLogo(logoId) {
   updateSummary();
 }
 
+/* ------------------------------------------------------------
+   RENDER: tallas y tabla de medidas de referencia
+   ------------------------------------------------------------ */
+function renderSizeCards() {
+  els.sizes.innerHTML = "";
+  CATALOG.sizes.forEach((size) => {
+    const isSelected = size.id === state.sizeId;
+    const pill = document.createElement("button");
+    pill.type = "button";
+    pill.className = `size-pill ${isSelected ? "size-pill--selected" : ""}`;
+    pill.setAttribute("aria-pressed", String(isSelected));
+    const extra = size.extraCost > 0 ? `+${money(size.extraCost)}` : "Incluida";
+    pill.innerHTML = `
+      <span class="size-pill__name">${size.name}</span>
+      <span class="size-pill__price">${extra}</span>
+    `;
+    pill.addEventListener("click", () => {
+      state.sizeId = size.id;
+      renderSizeCards();
+      updateSummary();
+    });
+    els.sizes.appendChild(pill);
+  });
+}
+
+function renderSizeChart() {
+  const chart = CATALOG.sizeChart;
+  const headerCells = chart.sizes.map((s) => `<th>${s}</th>`).join("");
+  const rows = chart.rows
+    .map((row) => {
+      const cells = row.values.map((v) => `<td>${v}</td>`).join("");
+      return `<tr><th scope="row">${row.label}</th>${cells}</tr>`;
+    })
+    .join("");
+  els.sizeChartTable.innerHTML = `
+    <thead><tr><th>Medidas (cm)</th>${headerCells}</tr></thead>
+    <tbody>${rows}</tbody>
+  `;
+}
+
 function selectFabric(fabricId) {
   state.fabricId = fabricId;
 
@@ -198,12 +242,14 @@ function calculateTotal() {
   const pant = findById(CATALOG.pants, state.pantId);
   const fabric = findById(CATALOG.fabrics, state.fabricId);
   const logo = findById(CATALOG.logoOptions, state.logoId);
+  const size = findById(CATALOG.sizes, state.sizeId);
 
   let total = 0;
   if (shirt) total += shirt.price;
   if (pant) total += pant.price;
   if (fabric) total += fabric.extraCost;
   if (logo) total += logo.extraCost;
+  if (size) total += size.extraCost;
   return total;
 }
 
@@ -214,12 +260,14 @@ function updateSummary() {
   const palette = state.fabricId ? CATALOG.colorsByFabric[state.fabricId] : [];
   const color = state.colorId ? findById(palette, state.colorId) : null;
   const logo = findById(CATALOG.logoOptions, state.logoId);
+  const size = findById(CATALOG.sizes, state.sizeId);
 
   els.summaryShirt.textContent = shirt ? shirt.name : "Sin seleccionar";
   els.summaryPant.textContent = pant ? pant.name : "Sin seleccionar";
   els.summaryFabric.textContent = fabric ? fabric.name : "Sin seleccionar";
   els.summaryColor.textContent = color ? color.name : "Sin seleccionar";
   els.summaryLogo.textContent = logo ? logo.name : "Sin seleccionar";
+  els.summarySize.textContent = size ? size.name : "Sin seleccionar";
 
   if (color) {
     els.summaryColor.style.setProperty("--dot-color", color.hex);
@@ -230,7 +278,7 @@ function updateSummary() {
 
   els.summaryTotal.textContent = money(calculateTotal());
 
-  const complete = shirt && pant && fabric && color && logo;
+  const complete = shirt && pant && fabric && color && logo && size;
   els.orderBtn.disabled = !complete;
   els.orderBtn.classList.toggle("btn-disabled", !complete);
 
@@ -238,7 +286,7 @@ function updateSummary() {
 }
 
 function updateProgress() {
-  const steps = [state.shirtId, state.pantId, state.fabricId, state.colorId, state.logoId];
+  const steps = [state.shirtId, state.pantId, state.fabricId, state.colorId, state.logoId, state.sizeId];
   const done = steps.filter(Boolean).length;
   const pct = (done / steps.length) * 100;
   els.progressFill.style.width = `${pct}%`;
@@ -254,6 +302,7 @@ function buildWhatsAppMessage() {
   const palette = state.fabricId ? CATALOG.colorsByFabric[state.fabricId] : [];
   const color = findById(palette, state.colorId);
   const logo = findById(CATALOG.logoOptions, state.logoId);
+  const size = findById(CATALOG.sizes, state.sizeId);
   const total = calculateTotal();
 
   const lines = [
@@ -263,9 +312,10 @@ function buildWhatsAppMessage() {
     `• Tela: ${fabric.name}`,
     `• Color: ${color.name}`,
     `• Logo: ${logo.name}`,
+    `• Talla: ${size.name}`,
     `• Total estimado: ${money(total)}`,
     "",
-    "Quedo atent@ para coordinar talla, medidas y forma de pago. ¡Gracias!",
+    "Quedo atent@ para coordinar medidas y forma de pago. ¡Gracias!",
   ];
 
   return encodeURIComponent(lines.join("\n"));
@@ -311,6 +361,8 @@ function init() {
   renderFabricCards();
   renderColorSwatches();
   renderLogoCards();
+  renderSizeCards();
+  renderSizeChart();
   updateSummary();
   els.orderBtn.addEventListener("click", handleOrderClick);
 

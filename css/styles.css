@@ -302,6 +302,96 @@ header img {
   margin-top: 0.6rem;
 }
 
+/* ---------- Tallas ---------- */
+.sizes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.size-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  min-width: 4.5rem;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.size-pill:hover {
+  border-color: var(--kalas-light);
+}
+
+.size-pill--selected {
+  border-color: var(--kalas);
+  box-shadow: 0 0 0 3px rgba(74, 43, 107, 0.2);
+}
+
+.size-pill__name {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.size-pill__price {
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Tabla de medidas (referencia) ---------- */
+.size-chart {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+}
+
+.size-chart summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--kalas-dark);
+}
+
+.size-chart__scroll {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.size-chart table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 480px;
+  font-size: 0.8rem;
+}
+
+.size-chart th,
+.size-chart td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.6rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.size-chart thead th {
+  background: var(--kalas-tint);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.size-chart tbody th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--kalas-tint);
+}
+
 /* ---------- Pedido personalizado ---------- */
 .custom-order {
   background: var(--kalas-tint);
