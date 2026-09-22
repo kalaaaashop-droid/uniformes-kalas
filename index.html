@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Uniformes Kalas | Arma tu conjunto de scrubs a medida</title>
+  <title>Kala's Uniformes | Arma tu conjunto de scrubs a medida</title>
   <meta name="description" content="Diseña tu uniforme médico personalizado: elige camisa, pantalón, tela y color. Confección bajo pedido en Valencia, Venezuela." />
 
   <!-- Tailwind CSS (CDN) -->
@@ -13,20 +13,19 @@
       theme: {
         extend: {
           colors: {
-            clinic: {
-              blue: "#2F6690",
-              "blue-dark": "#1F4A68",
-              "blue-light": "#EAF1F8",
-              mint: "#6FBBA6",
-              "mint-dark": "#4B9683",
-              "mint-light": "#EAF6F2",
+            kalas: {
+              900: "#170029",
+              dark: "#22003F",
+              DEFAULT: "#4A2B6B",
+              light: "#C9BBDA",
+              tint: "#F3EEF9",
             },
             slate: {
-              900: "#1F2933",
-              700: "#3E4C59",
-              500: "#7B8794",
-              200: "#E4E7EB",
-              100: "#F5F7FA",
+              900: "#241536",
+              700: "#4B3D5C",
+              500: "#7B6F8A",
+              200: "#E4DEED",
+              100: "#F7F4FA",
             },
           },
           fontFamily: {
@@ -47,21 +46,18 @@
 <body class="bg-slate-100 text-slate-900 font-sans antialiased">
 
   <!-- ===================== HEADER ===================== -->
-  <header class="bg-clinic-blue-dark text-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="w-9 h-9 rounded-full bg-clinic-mint flex items-center justify-center font-extrabold text-clinic-blue-dark">U</span>
-        <span class="font-extrabold text-lg tracking-wide">Uniformes <span class="text-clinic-mint">Kalas</span></span>
-      </div>
-      <p class="hidden sm:block text-sm text-white/80">Confección bajo pedido en Valencia, Venezuela</p>
+  <header class="bg-kalas-dark text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <img src="img/logos/logo-kalas.png" alt="Kala's Uniformes" class="h-12 sm:h-14 w-auto" />
+      <p class="hidden sm:block text-sm text-white/70">Confección bajo pedido en Valencia, Venezuela</p>
     </div>
   </header>
 
   <!-- ===================== HERO ===================== -->
-  <section class="bg-clinic-blue text-white">
+  <section class="bg-gradient-to-b from-kalas-900 to-kalas-dark text-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold">Arma tu uniforme médico a tu medida</h1>
-      <p class="mt-3 text-white/85 max-w-2xl mx-auto">
+      <p class="mt-3 text-kalas-light/90 max-w-2xl mx-auto">
         Elige la camisa, el pantalón, la tela y el color. Nosotras lo confeccionamos para ti.
       </p>
     </div>
@@ -71,7 +67,7 @@
   <div class="sticky top-0 z-40 bg-white border-b border-slate-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
-        <div id="progress-fill" class="h-full bg-clinic-mint transition-all duration-300" style="width: 0%"></div>
+        <div id="progress-fill" class="h-full bg-kalas transition-all duration-300" style="width: 0%"></div>
       </div>
     </div>
   </div>
@@ -177,8 +173,8 @@
     </button>
   </div>
 
-  <footer class="bg-clinic-blue-dark text-white/70 text-center text-sm py-6 mt-4">
-    <p>© <span id="year"></span> Uniformes Kalas — Confección bajo pedido.</p>
+  <footer class="bg-kalas-dark text-white/70 text-center text-sm py-6 mt-4">
+    <p>© <span id="year"></span> Kala's Uniformes — Confección bajo pedido.</p>
   </footer>
 
   <script src="js/data.js"></script>
