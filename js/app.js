@@ -26,6 +26,8 @@ const els = {
   summaryTotal: document.getElementById("summary-total"),
   orderBtn: document.getElementById("order-btn"),
   progressFill: document.getElementById("progress-fill"),
+  customOrderText: document.getElementById("custom-order-text"),
+  customOrderBtn: document.getElementById("custom-order-btn"),
 };
 
 function findById(list, id) {
@@ -277,6 +279,30 @@ function handleOrderClick() {
 }
 
 /* ------------------------------------------------------------
+   PEDIDO PERSONALIZADO
+   Para clientas que quieren un modelo que no está en el catálogo.
+   ------------------------------------------------------------ */
+function buildCustomOrderMessage(description) {
+  const lines = [
+    "¡Hola! Quiero hacer un pedido personalizado que no encontré en el catálogo:",
+    "",
+    description,
+    "",
+    "Quedo atent@ para coordinar los detalles. ¡Gracias!",
+  ];
+  return encodeURIComponent(lines.join("\n"));
+}
+
+function handleCustomOrderClick() {
+  if (els.customOrderBtn.disabled) return;
+  const description = els.customOrderText.value.trim();
+  if (!description) return;
+  const message = buildCustomOrderMessage(description);
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+/* ------------------------------------------------------------
    INICIALIZACIÓN
    ------------------------------------------------------------ */
 function init() {
@@ -287,6 +313,13 @@ function init() {
   renderLogoCards();
   updateSummary();
   els.orderBtn.addEventListener("click", handleOrderClick);
+
+  els.customOrderText.addEventListener("input", () => {
+    const hasText = els.customOrderText.value.trim().length > 0;
+    els.customOrderBtn.disabled = !hasText;
+    els.customOrderBtn.classList.toggle("btn-disabled", !hasText);
+  });
+  els.customOrderBtn.addEventListener("click", handleCustomOrderClick);
 }
 
 document.addEventListener("DOMContentLoaded", init);

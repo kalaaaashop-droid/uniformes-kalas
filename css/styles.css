@@ -302,6 +302,53 @@ header img {
   margin-top: 0.6rem;
 }
 
+/* ---------- Pedido personalizado ---------- */
+.custom-order {
+  background: var(--kalas-tint);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.custom-order__title {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.custom-order__subtitle {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 40rem;
+  margin: 0.5rem auto 1.25rem;
+}
+
+.custom-order__textarea {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.6rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  resize: vertical;
+  background: #fff;
+}
+
+.custom-order__textarea:focus {
+  outline: none;
+  border-color: var(--kalas-light);
+}
+
+.custom-order__btn {
+  max-width: 26rem;
+  margin: 1rem auto 0;
+}
+
 /* ---------- Barra de resumen fija (móvil) ---------- */
 .summary-bar {
   position: fixed;
