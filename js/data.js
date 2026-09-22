@@ -16,7 +16,7 @@ const CATALOG = {
     },
     {
       id: "shirt-v-bolsillo",
-      name: "Cuello V con Bolsillo",
+      name: "Cuello en V Moderno",
       description: "Escote en V, bolsillo frontal para bordado o logo.",
       price: 19,
       image: "img/productos/camisa-cuello-v-bolsillo.jpg",
