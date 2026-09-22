@@ -70,9 +70,9 @@ const CATALOG = {
     {
       id: "pant-cargo",
       name: "Cargo Multibolsillos",
-      description: "Bolsillos laterales tipo cargo, muy funcional.",
+      description: "Bolsillo cargo tipo parche, uno de cada lado, muy funcional.",
       price: 19,
-      image: "https://placehold.co/400x400/EAF1F8/0B3D5C?text=Pantalon+Cargo",
+      image: "img/productos/pantalon-cargo-multibolsillos.jpg",
     },
     {
       id: "pant-bolsillo-clasico",
