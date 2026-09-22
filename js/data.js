@@ -71,7 +71,7 @@ const CATALOG = {
       id: "pant-bolsillo-superior-expuesto",
       name: "Bolsillo Superior Expuesto",
       description: "Cintura elástica con cordón. <strong>Va junto al Bolsillo Clásico y puedes elegir entre cargo y bota recta.</strong>",
-      price: 18,
+      price: 19,
       image: "img/productos/pantalon-bolsillo-superior-expuesto.jpg",
     },
   ],
