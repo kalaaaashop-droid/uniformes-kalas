@@ -44,7 +44,7 @@ const CATALOG = {
     },
     {
       id: "shirt-mao-fino",
-      name: "Cuello Mao Fino",
+      name: "Cuello Mao Delgado",
       description: "Cuello mao delgado, manga corta, ajuste recto.",
       price: 19,
       image: "img/productos/camisa-cuello-mao-fino.jpg",
